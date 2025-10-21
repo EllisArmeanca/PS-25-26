@@ -1,0 +1,5 @@
+a ) T = 1/2000 = 0.0005 s
+b)
+2000 esantionae pe secunda
+biti totali = 2000 * 3600 * 4 - 28800000 biti
+bytes = 28800000 / 8 = 3600000 bytes

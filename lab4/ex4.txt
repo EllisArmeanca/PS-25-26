@@ -1,0 +1,16 @@
+Frecventele emise de un contrabas se incadreaza intre 40 Hz si 200 Hz.
+Care este frecventa minima cu care trebuie
+esantionat semnalul trece-banda provenit din
+inregistrarea instrumentului,
+astfel incat semnalul discretizat sa
+contina toate componentele de frecventa
+pe care instrumentul le poate produce?
+
+REZ:
+Pt a nu avea pierderi de informatie, un semnal trebuie esantionat cu
+fs > 2*200 = 400Hz.
+(frecventa maxima a contrabasului fiind 200)
+
+Conform teoremei esantionarii Nyquist-Shannon,
+freventa minima de esantionare este orice valoare strict mai mare
+decat 400Hz.

@@ -1,0 +1,8 @@
+
+SNRdb = 10 log 10 SNR
+
+80 = 10 log 10 SNR
+=> SNR = 10^(80/10) = 10^8
+
+SNR = 90 / Pzgomot
+=> Pzgomot = 90 / 10 ^ 8 = 9 * 10 ^ -7

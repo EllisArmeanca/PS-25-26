@@ -61,7 +61,7 @@ plt.tight_layout()
 plt.show()
 
 F_H = mat_four.conj().T #hermitiana si transpusa si conjugata
-
+# transpusa conjugata a matricei dft
 G =  F_H @  mat_four
 
 v = np.allclose(G, N * np.eye(N))

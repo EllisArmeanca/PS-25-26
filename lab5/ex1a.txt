@@ -1,0 +1,17 @@
+ 1A)
+ - se esantioneaza din ora in ora
+ => frecventa de esantionare: 1 esantion / 1 ora = 1/3600 Hz
+
+ 1B)
+ N = 18288 esantioane
+ Fs = 1 esantion / 1 ora
+ = > 24 esantioane / zi
+
+ = > T = 18288 / 24 = 762 zile
+
+ 1C)
+ fmax = Fs / 2 = 1/2 * 1/3600 Hz = 1/7200 Hz
+ cate cicluri pe zi ?
+    = > fmax * 86400 secunde / zi
+    = > 86400 / 7200 = 12 cicluri / zi
+    

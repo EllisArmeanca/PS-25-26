@@ -11,7 +11,7 @@ plt.title("Original")
 plt.show()
 
 # adaug zgomot ( lab )
-pixel_noise = 20
+pixel_noise = 200
 noise = np.random.randint(-pixel_noise, high=pixel_noise+1, size=X.shape)
 X_noisy = X + noise
 
@@ -29,12 +29,29 @@ print("SNR inainte filtrare:", SNR_inainte, "dB")
 Y_noisy = np.fft.fft2(X_noisy)
 freq_db_noisy = 20*np.log10(abs(Y_noisy))
 
+# afisam spectrul inainte de filtrare
+plt.figure()
+plt.imshow(np.log1p(np.abs(np.fft.fftshift(Y_noisy))), cmap='gray')
+plt.title("Y_noisy - spectru inainte de filtrare")
+plt.colorbar()
+plt.show()
+
+
 # prag de frecventa
 freq_cutoff = 150
 
 # eliminam frecventele inalte
 Y_clean = Y_noisy.copy()
 Y_clean[freq_db_noisy > freq_cutoff] = 0
+
+# afisam spectrul dupa filtrare
+plt.figure()
+plt.imshow(np.log1p(np.abs(np.fft.fftshift(Y_clean))), cmap='gray')
+plt.title("Y_clean - spectru DUPA filtrare")
+plt.colorbar()
+plt.show()
+
+
 X_denoised = np.fft.ifft2(Y_clean)
 X_denoised = np.real(X_denoised)
 

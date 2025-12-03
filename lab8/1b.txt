@@ -1,0 +1,37 @@
+1. Functia autocor(y, max_k)
+
+Calculeaza autocorelatia nescalata pentru lagurile 0, 1, ..., max_k.
+Pentru fiecare lag k:
+
+se acumuleaza produsul valorilor y[t] * y[t-k] pentru t >= k,
+
+se imparte suma prin (N - k) pentru normalizare.
+
+Functia intoarce vectorul autocorelatiilor.
+
+2. Generarea seriei de timp
+
+Seria este construita din trei componente:
+
+trend: termen polinomial de gradul 2, 0.01 * t^2
+
+sezon: doua componente sinusoidale cu frecvente diferite
+
+zgomot: zgomot alb gaussian cu distributie N(0, 2)
+
+Seria finala se obtine prin suma trend + sezon + zgomot.
+
+3. Calculul autocorelatiei
+
+Se apeleaza functia autocor(serie_timp, 200) pentru a obtine autocorelatia pana la lagul 200.
+Rezultatul este vectorul v.
+
+4. Afisarea grafica
+
+Se creeaza un grafic simplu:
+
+pe axa X se reprezinta lagul,
+
+pe axa Y valoarea autocorelatiei.
+
+Graficul este salvat ca "ex1b.pdf" si afisat pe ecran.

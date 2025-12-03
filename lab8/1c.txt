@@ -1,0 +1,54 @@
+1. Functia autocor(y, max_k)
+
+Calculeaza autocorelatia nescalata pentru laguri de la 0 la max_k.
+Pentru fiecare k, inmulteste valorile decalate y[t] * y[t-k] si imparte prin numarul de termeni disponibili (N - k).
+
+2. Functia build_AR(y, p)
+
+Construieste setul de antrenare pentru modelul AR(p).
+
+Pentru fiecare pozitie i>=p, extrage ultimii p termeni anteriori ca vector de intrare.
+
+Tinta T[i] este valoarea reala y[i].
+
+Rezultatul este matricea Y (intrari) si vectorul T (iesiri).
+
+3. Functia train_AR(y, p)
+
+Antreneaza modelul AR folosind formula de regresie liniara:
+w = (Y^T Y)^(-1) Y^T T
+Coeficientii obtinuti sunt ponderile autoregresive ale modelului.
+
+4. Functia predict_AR(y, p, coef)
+
+Genereaza predictia pe toata seria:
+
+Copiaza primele p valori direct din serie (nu le poate prezice).
+
+Pentru fiecare punct ulterior calculeaza suma coef[j] * valoarea precedenta, conform formulei AR(p).
+Rezultatul este vectorul complet al predictiilor.
+
+5. Generarea seriei de timp
+
+Seria este construita din trei componente:
+
+trend: un trend de gradul 2 (0.01 * t^2)
+
+sezon: doua sinusoide cu frecvente diferite
+
+zgomot: zgomot alb gaussian cu distributie N(0, 2)
+
+Seria finala = trend + sezon + zgomot.
+
+6. Antrenarea si predictia modelului AR
+
+Se seteaza ordinul p = 5.
+
+Se antreneaza modelul AR(5) pe seria generata.
+
+Se obtine predictia pentru intreaga serie prin functia predict_AR.
+
+7. Plotarea rezultatelor
+
+Codul deseneaza seria originala si predictia modelului AR pe acelasi grafic.
+Imaginea este salvata ca "ex1c.pdf".

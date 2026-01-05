@@ -13,13 +13,13 @@ plt.imshow(X, cmap=plt.cm.gray)
 plt.title("Original")
 plt.show()
 
-# ---------- UTILIZATORUL setează pragul MSE ----------
-prag_MSE = 200   # exemplu (poti schimba)
+#  UTILIZATORUL setează pragul MSE
+prag_MSE = 200
 
-# ---------- Transformare DCT ----------
+#  Transformare DCT
 Y = dctn(X)
 
-# ---------- Compresie prin taierea frecventelor ----------
+#  Compresie prin taierea frecventelor
 H, W = Y.shape
 Y_flat = Y.flatten()
 
@@ -48,10 +48,17 @@ for k in range(len(Y_flat)):
         break
 
 # ---------- Afisare rezultat ----------
-plt.subplot(121).imshow(X, cmap='gray')
+plt.figure(figsize=(10, 4))
+
+plt.subplot(121)
+plt.imshow(X, cmap='gray')
 plt.title("Original")
 
-plt.subplot(122).imshow(X_rec, cmap='gray')
+plt.subplot(122)
+plt.imshow(X_rec, cmap='gray')
 plt.title("Compresie cu prag MSE")
+
+# SAVE FIGURE
+plt.savefig("ex3ss1.png", dpi=300, bbox_inches="tight")
 
 plt.show()

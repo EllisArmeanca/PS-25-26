@@ -6,10 +6,10 @@ from scipy.fft import dctn, idctn
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
-# -------------- GENERAM UN VIDEO SIMPLU --------------
+# VIDEO
 # 5 cadre, fiecare cadru e imaginea face() rotita diferit
 frames = []
-X = misc.face().astype(float)
+X = datasets.face().astype(float)
 
 for angle in [0, 10, 20, -10, -20]:
     frame = ndimage.rotate(X, angle, reshape=False)
@@ -17,7 +17,7 @@ for angle in [0, 10, 20, -10, -20]:
 
 video = np.array(frames)  # shape = (5, H, W, 3)
 
-# -------------- JPEG FOARTE SIMPLU PE CANALUL Y --------------
+# JPEG PE CANALUL Y
 
 Q = np.array([
     [16, 11, 10, 16, 24, 40, 51, 61],
@@ -71,11 +71,20 @@ for idx, frame in enumerate(video):
 
 compressed_video = np.array(compressed_video)
 
-# -------------- AFISAM 2 CADRE ca exemplu --------------
+# 2 CADRE ca exemplu
 
-plt.subplot(121).imshow(video[0].astype(np.uint8))
+plt.figure(figsize=(10, 4))
+
+plt.subplot(121)
+plt.imshow(video[0].astype(np.uint8))
 plt.title("Original cadru 0")
 
-plt.subplot(122).imshow(compressed_video[0])
+plt.subplot(122)
+plt.imshow(compressed_video[0])
 plt.title("Comprimat cadru 0")
+
+# SAVE FIGURE
+plt.savefig("ex4ss1.png", dpi=300, bbox_inches="tight")
+
 plt.show()
+

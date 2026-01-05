@@ -3,10 +3,10 @@ import numpy as np
 import matplotlib
 from scipy.fft import idctn, dctn
 
-matplotlib.use('TkAgg')        # setam backend inainte de pyplot
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
-# imaginea cu raton
+
 X = datasets.ascent()
 plt.imshow(X, cmap=plt.cm.gray)
 plt.title("Original")
@@ -30,13 +30,13 @@ X_decoded = np.zeros_like(X_encoded)
 # Dimensiunea imaginii
 H, W = X.shape
 
-# Parcurgem imaginea pe blocuri de 8x8
+#  imaginea pe blocuri de 8x8
 for i in range(0, H, 8):
     for j in range(0, W, 8):
         block = X_encoded[i:i+8, j:j+8]
 
         if block.shape != (8, 8):
-            continue  # sarim blocurile incomplete de la margine
+            continue
 
         # DCT pe bloc
         Y = dctn(block)
@@ -44,10 +44,10 @@ for i in range(0, H, 8):
         # Cuantizare
         Y_q = Q_jpeg * np.round(Y / Q_jpeg)
 
-        # iDCT pentru reconstructie
+        # iDCT
         block_rec = idctn(Y_q)
 
-        # Salvam blocul reconstruit
+        # Salvare
         X_decoded[i:i+8, j:j+8] = block_rec
 
 
@@ -55,6 +55,10 @@ plt.subplot(121).imshow(X, cmap=plt.cm.gray)
 plt.title("Original")
 plt.subplot(122).imshow(X_decoded, cmap=plt.cm.gray)
 plt.title("JPEG blocuri 8x8")
+
+# SAVE FIGURE
+plt.savefig("ex1ss1.png", dpi=300, bbox_inches="tight")
+
 plt.show()
 
 #dct - transformarea blocului in frevente#
